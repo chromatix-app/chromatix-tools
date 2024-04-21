@@ -1,0 +1,17 @@
+{
+  "name": "chromatix-tools",
+  "version": "0.0.0",
+  "description": "",
+  "license": "UNLICENSED",
+  "private": "true",
+  "homepage": "/",
+  "scripts": {},
+  "dependencies": {
+    "axios": "^1.6.8",
+    "crypto-js": "^4.2.0",
+    "fast-xml-parser": "^4.3.6"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8"
+  }
+}

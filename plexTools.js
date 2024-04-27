@@ -13,7 +13,7 @@ import { XMLParser } from 'fast-xml-parser';
 const secretKey = 'your_secret_key';
 
 const appName = 'Your App Name';
-const clientIdentifier = 'your_identifier.app';
+const clientId = 'your_identifier.app';
 const clientIcon = 'https://your-site/your-icon.png';
 
 const storagePinKey = 'my-pin-id';
@@ -138,7 +138,7 @@ export const login = () => {
               Accept: 'application/json',
               'Content-Type': 'application/json',
               'X-Plex-Product': appName,
-              'X-Plex-Client-Identifier': clientIdentifier,
+              'X-Plex-Client-Identifier': clientId,
               'X-Plex-Device-Icon': clientIcon, // NOTE: this doesn't seem to work
             },
           }
@@ -152,7 +152,7 @@ export const login = () => {
           setLocalStorage(storagePinKey, pinId);
 
           // redirect to the Plex login page
-          const authAppUrl = `https://app.plex.tv/auth#?clientID=${clientIdentifier}&code=${pinCode}&context%5Bdevice%5D%5Bproduct%5D=${encodeURIComponent(
+          const authAppUrl = `https://app.plex.tv/auth#?clientID=${clientId}&code=${pinCode}&context%5Bdevice%5D%5Bproduct%5D=${encodeURIComponent(
             appName
           )}&forwardUrl=${encodeURIComponent(redirectUrl)}`;
           window.location.href = authAppUrl;
@@ -191,7 +191,7 @@ const checkPlexPinStatus = (pinId, retryCount = 0) => {
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            'X-Plex-Client-Identifier': clientIdentifier,
+            'X-Plex-Client-Identifier': clientId,
           },
         })
         .then((response) => {
@@ -295,7 +295,7 @@ export const getAllServers = () => {
             Accept: 'application/json',
             'Content-Type': 'application/json',
             'X-Plex-Token': authToken,
-            'X-Plex-Client-Identifier': clientIdentifier,
+            'X-Plex-Client-Identifier': clientId,
           },
         })
         .then((response) => {
@@ -348,7 +348,7 @@ export const getFastestServerConnection = (server) => {
               Accept: 'application/json',
               'Content-Type': 'application/json',
               'X-Plex-Token': accessToken,
-              'X-Plex-Client-Identifier': clientIdentifier,
+              'X-Plex-Client-Identifier': clientId,
             },
             timeout: 3000,
           })
@@ -388,7 +388,7 @@ export const getAllLibraries = (baseUrl, accessToken) => {
             Accept: 'application/json',
             'Content-Type': 'application/json',
             'X-Plex-Token': accessToken,
-            'X-Plex-Client-Identifier': clientIdentifier,
+            'X-Plex-Client-Identifier': clientId,
           },
         })
         .then((response) => {
